@@ -235,3 +235,43 @@ function exportarPDF() {
 }
 
 document.addEventListener('DOMContentLoaded', init);
+
+function exportarCSV() {
+  const termo = document.getElementById('search').value.toLowerCase();
+  let dados = dadosOriginais;
+
+  if (filtroAtivo !== 'todos') {
+    dados = dados.filter(c => getStatus(c.status) === filtroAtivo);
+  }
+  if (termo) {
+    dados = dados.filter(c =>
+      (c.n_os || '').toLowerCase().includes(termo) ||
+      (c.loja || '').toLowerCase().includes(termo) ||
+      (c.problema || '').toLowerCase().includes(termo)
+    );
+  }
+
+  const cabecalho = ['Nº OS','Loja','Problema','Responsável','Valor Orçado','Valor Aprovado','Status'];
+  const linhas = dados.map(c => [
+    c.n_os || '',
+    c.loja || '',
+    (c.problema || '').replace(/"/g, '""'),
+    (c.responsavel || '').split('/')[0].trim(),
+    c.valor_orcado ? Number(c.valor_orcado).toFixed(2).replace('.',',') : '',
+    c.valor_aprovado ? Number(c.valor_aprovado).toFixed(2).replace('.',',') : '',
+    c.status || ''
+  ]);
+
+  const csv = [cabecalho, ...linhas]
+    .map(r => r.map(v => `"${v}"`).join(';'))
+    .join('\n');
+
+  const bom = '\uFEFF';
+  const blob = new Blob([bom + csv], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `infoxtec-sound-report-${filtroAtivo}-${new Date().toISOString().slice(0,10)}.csv`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
