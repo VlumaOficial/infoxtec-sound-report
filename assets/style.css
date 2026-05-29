@@ -163,14 +163,14 @@ tbody tr:hover td { background: var(--bg-page); }
 .filter-btn:hover, .filter-btn.active { background: var(--infox-pale); border-color: var(--infox-light); color: var(--infox-primary); font-weight: 500; }
 
 /* ── FOOTER ── */
-.footer {
+.footer { position: relative;
   background: #111827;
   padding: 14px 28px;
   display: flex; align-items: center; justify-content: space-between;
   margin-top: 32px;
 }
 .footer-copy { font-size: 10px; color: #4B5A6B; }
-.footer-brand { display: flex; align-items: center; gap: 8px; }
+.footer-brand { display: flex; align-items: center; gap: 8px; position: absolute; left: 50%; transform: translateX(-50%); }
 .vluma-badge {
   width: 26px; height: 26px; border-radius: 50%;
   overflow: hidden; display: flex; align-items: center; justify-content: center;
@@ -185,13 +185,30 @@ tbody tr:hover td { background: var(--bg-page); }
 .footer-version { font-size: 10px; color: #2D3748; }
 
 /* ── RESPONSIVE ── */
+
 @media (max-width: 900px) {
   .kpi-grid { grid-template-columns: repeat(2, 1fr); }
   .row-2, .row-3 { grid-template-columns: 1fr; }
   .topbar { padding: 0 16px; }
   .main { padding: 16px; }
+  .footer { flex-direction: column; gap: 10px; text-align: center; padding: 16px; }
+  .footer-brand { position: static; transform: none; }
+  .footer-copy, .footer-version { text-align: center; }
+  .toolbar { flex-wrap: wrap; }
+  .filter-btn { font-size: 10px; padding: 6px 8px; }
 }
+
 @media (max-width: 480px) {
   .kpi-grid { grid-template-columns: 1fr 1fr; }
   .topbar-titles p { display: none; }
+  .topbar-titles h1 { font-size: 12px; }
+  .topbar-logo { height: 28px; }
+  .badge-date { display: none; }
+  .btn-pdf { font-size: 11px; padding: 6px 10px; }
+  .main { padding: 12px; }
+  .kpi-value { font-size: 22px; }
+  .toolbar { gap: 6px; }
+  .search-box { font-size: 11px; }
+  table { font-size: 11px; }
+  thead th, tbody td { padding: 6px 7px; }
 }
