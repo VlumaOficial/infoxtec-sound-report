@@ -1,5 +1,5 @@
 {
-  "gerado_em": "2026-05-29T23:31:53",
+  "gerado_em": "2026-05-30T00:00:49",
   "total": 21,
   "chamados": [
     {
@@ -17,7 +17,7 @@
       "data_exec": "2026-05-12",
       "n_protocolo": "70295",
       "valor_aprovado": 3066.75,
-      "observacoes": "Aprovação parcial do orçamento. Itens aprovados: Troca Potência + PRÉ + Serviços técnicos RACK."
+      "observacoes": "Aprovação parcial. Itens aprovados: Troca Potência + PRÉ + Serviços técnicos RACK."
     },
     {
       "n_os": "3394803",
@@ -102,7 +102,7 @@
       "data_exec": "2026-05-22",
       "n_protocolo": "70294",
       "valor_aprovado": 472.5,
-      "observacoes": "Aprovação parcial. Itens: Instalação Mic S/Fio e Mesa + Equalização. Unidade Ilha Itaparica."
+      "observacoes": "Aprovação parcial. Unidade Ilha Itaparica."
     },
     {
       "n_os": "3396627",
@@ -126,17 +126,17 @@
       "loja": "Loja 61",
       "problema": "Som interrompe constantemente, mal contato com os microfones. Impossibilita uso do rádio e microfones.",
       "data_abertura": "2026-04-30",
-      "data_atend": null,
-      "acao": "OS aberta. Atendimento não realizado.",
-      "responsavel": "—",
-      "status": "Não Atendido",
-      "data_orc": null,
-      "itens_orc": null,
-      "valor_orcado": null,
-      "data_exec": null,
-      "n_protocolo": null,
-      "valor_aprovado": null,
-      "observacoes": null
+      "data_atend": "2026-05-29",
+      "acao": "Verificações no P1 e testes no sistema de som. Microfone bancada OK. Microfone sem fio com defeito no plug de carregamento. Cornetas não responderam — necessário troca das bobinas. Conexão com computador via Bluetooth e Pré-Oneal funcionando perfeitamente.",
+      "responsavel": "Renato Santana",
+      "status": "Aguardando Aprovação de Orçamento",
+      "data_orc": "2026-05-29",
+      "itens_orc": "1x Serviços Técnicos Ajustes PC X Rack Som SAC\n1x Serviços Técnicos Ajuste Som P1\n3x Peça Reparo de Corneta P1\n1x Mic Dylan UDX-02 Multi Dinâmico Cardioide S/Fio",
+      "valor_orcado": 2365.0,
+      "data_exec": "2026-05-29",
+      "n_protocolo": "ORC-2026-001",
+      "valor_aprovado": 2365.0,
+      "observacoes": "Orçamento ORC-2026-001. Válido até 28/06/2026."
     },
     {
       "n_os": "3398395",
