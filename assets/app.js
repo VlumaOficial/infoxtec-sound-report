@@ -7,7 +7,7 @@ async function init() {
   dadosOriginais = json.chamados;
 
   const geradoEm = new Date(json.gerado_em);
-  document.getElementById('data-ref').textContent =
+  // document.getElementById('data-ref').textContent =
     geradoEm.toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' });
 
   renderKPIs();
