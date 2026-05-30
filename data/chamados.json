@@ -1,6 +1,6 @@
 {
-  "gerado_em": "2026-05-29T13:13:28",
-  "total": 17,
+  "gerado_em": "2026-05-29T22:08:52",
+  "total": 21,
   "chamados": [
     {
       "n_os": "3390806",
@@ -290,6 +290,74 @@
       "n_protocolo": "70751",
       "valor_aprovado": 458.94,
       "observacoes": "OS não gerada. Valor aprovado R$ 458,94 (orçado R$ 463,57)."
+    },
+    {
+      "n_os": "LEGENDA DE STATUS",
+      "loja": null,
+      "problema": null,
+      "data_abertura": null,
+      "data_atend": null,
+      "acao": null,
+      "responsavel": null,
+      "status": null,
+      "data_orc": null,
+      "itens_orc": null,
+      "valor_orcado": null,
+      "data_exec": null,
+      "n_protocolo": null,
+      "valor_aprovado": null,
+      "observacoes": null
+    },
+    {
+      "n_os": "● Concluído Faturado — Serviço executado e faturado",
+      "loja": null,
+      "problema": null,
+      "data_abertura": null,
+      "data_atend": null,
+      "acao": null,
+      "responsavel": null,
+      "status": null,
+      "data_orc": null,
+      "itens_orc": null,
+      "valor_orcado": null,
+      "data_exec": null,
+      "n_protocolo": null,
+      "valor_aprovado": null,
+      "observacoes": null
+    },
+    {
+      "n_os": "● Concluído Aguardando Faturamento — Executado, NF pendente",
+      "loja": null,
+      "problema": null,
+      "data_abertura": null,
+      "data_atend": null,
+      "acao": null,
+      "responsavel": null,
+      "status": null,
+      "data_orc": null,
+      "itens_orc": null,
+      "valor_orcado": null,
+      "data_exec": null,
+      "n_protocolo": null,
+      "valor_aprovado": null,
+      "observacoes": null
+    },
+    {
+      "n_os": "● Concluído Sem Faturamento — Executado sem cobrança",
+      "loja": null,
+      "problema": null,
+      "data_abertura": null,
+      "data_atend": null,
+      "acao": null,
+      "responsavel": null,
+      "status": null,
+      "data_orc": null,
+      "itens_orc": null,
+      "valor_orcado": null,
+      "data_exec": null,
+      "n_protocolo": null,
+      "valor_aprovado": null,
+      "observacoes": null
     }
   ]
 }
