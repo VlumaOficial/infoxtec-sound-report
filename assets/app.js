@@ -275,3 +275,38 @@ function exportarCSV() {
   a.click();
   URL.revokeObjectURL(url);
 }
+
+async function sincronizar() {
+  const btn = document.getElementById('btn-sync');
+  btn.classList.add('loading');
+  btn.innerHTML = '<i class="ti ti-loader-2" style="animation:spin 1s linear infinite;"></i> Sincronizando...';
+  btn.disabled = true;
+
+  try {
+    const res = await fetch('https://sync.vluma.com.br/sync', {
+      method: 'POST',
+      headers: { 'X-API-Key': 'o_g1PPynodbzaXwlfrp_QHlm6iT1N-2OaH_NOojaM7c' }
+    });
+    const data = await res.json();
+    if (data.status === 'ok') {
+      btn.innerHTML = '<i class="ti ti-check"></i> Atualizado!';
+      btn.style.background = '#0F6E56';
+      setTimeout(() => location.reload(), 3000);
+    } else {
+      throw new Error(data.detail || 'Erro desconhecido');
+    }
+  } catch (err) {
+    btn.innerHTML = '<i class="ti ti-alert-triangle"></i> Erro!';
+    btn.style.background = '#E24B4A';
+    setTimeout(() => {
+      btn.classList.remove('loading');
+      btn.innerHTML = '<i class="ti ti-refresh"></i> Atualizar dados';
+      btn.style.background = '';
+      btn.disabled = false;
+    }, 4000);
+  }
+}
+
+const style = document.createElement('style');
+style.textContent = '@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }';
+document.head.appendChild(style);

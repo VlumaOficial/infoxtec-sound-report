@@ -212,3 +212,14 @@ tbody tr:hover td { background: var(--bg-page); }
   table { font-size: 11px; }
   thead th, tbody td { padding: 6px 7px; }
 }
+
+.btn-sync {
+  font-size: 12px; font-weight: 500;
+  background: #1D9E75;
+  border: none; border-radius: var(--radius-sm);
+  padding: 7px 14px; color: #fff;
+  cursor: pointer; display: flex; align-items: center; gap: 6px;
+  transition: background 0.2s;
+}
+.btn-sync:hover { background: #0F6E56; }
+.btn-sync.loading { background: #888; cursor: not-allowed; }
