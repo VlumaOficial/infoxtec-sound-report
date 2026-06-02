@@ -1,5 +1,5 @@
 {
-  "gerado_em": "2026-05-30T13:49:52",
+  "gerado_em": "2026-06-02T16:40:53",
   "total": 21,
   "chamados": [
     {
@@ -127,7 +127,7 @@
       "problema": "Som interrompe constantemente. Mal contato microfones.",
       "data_abertura": "2026-04-30",
       "data_atend": "2026-05-29",
-      "acao": "Verificacoes P1 e testes sistema som. Mic bancada OK. Mic sem fio com defeito plug carregamento. Cornetas necessitam troca bobinas. Bluetooth + Pre-Oneal funcionando perfeitamente.",
+      "acao": "Verificacoes P1 e testes sistema som. Mic bancada OK. Mic sem fio com defeito plug carregamento. Cornetas necessitam troca bobinas. Bluetooth + Pre-Oneal funcionando.",
       "responsavel": "Renato Santana",
       "status": "Aguardando Aprovacao de Orcamento",
       "data_orc": "2026-05-29",
@@ -246,12 +246,12 @@
       "problema": "Microfone com problema na bateria, nao segura carga.",
       "data_abertura": "2026-05-25",
       "data_atend": null,
-      "acao": "OS aberta. Atendimento nao realizado.",
+      "acao": "Orcamento emitido para substituicao do microfone sem fio Dylan UDX-02.",
       "responsavel": "—",
-      "status": "Nao Atendido",
-      "data_orc": null,
-      "itens_orc": null,
-      "valor_orcado": null,
+      "status": "Aguardando Aprovacao de Orcamento",
+      "data_orc": "2026-05-25",
+      "itens_orc": "1x Mic Dylan UDX-02 Multi Dinamico Cardioide Preto S/Fio\n1x Servicos Tecnicos de Instalacao\n1x Mobilizacao de Equipe",
+      "valor_orcado": 1854.29,
       "data_exec": null,
       "n_protocolo": null,
       "valor_aprovado": null,
