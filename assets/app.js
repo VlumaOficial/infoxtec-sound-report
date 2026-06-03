@@ -252,6 +252,11 @@ function exportarPDF() { window.print(); }
 
 // ── MODAL ──
 function abrirModal(id = null) {
+  pedirSenha(() => _abrirModal(id));
+  return;
+}
+
+function _abrirModal(id = null) {
   editandoId = id;
   const c = id ? dadosOriginais.find(x => x.id === id) : {};
   document.getElementById('modal-titulo').textContent = id ? 'Editar Chamado' : 'Novo Chamado';
@@ -321,3 +326,77 @@ document.addEventListener('DOMContentLoaded', init);
 const style = document.createElement('style');
 style.textContent = '@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }';
 document.head.appendChild(style);
+
+// ── AUTENTICAÇÃO SIMPLES ──
+const SENHA_HASH = 'a8f5f167f44f4964e6c998dee827110c'; // Infoxtec@!
+const SESSION_KEY = 'infox_auth';
+const SESSION_DURATION = 15 * 60 * 1000; // 15 minutos
+
+function md5(str) {
+  // Implementação simples de hash para validação
+  let hash = 0;
+  for (let i = 0; i < str.length; i++) {
+    const char = str.charCodeAt(i);
+    hash = ((hash << 5) - hash) + char;
+    hash = hash & hash;
+  }
+  return Math.abs(hash).toString(16);
+}
+
+const SENHA_CORRETA = md5('Infoxtec@!');
+
+function isSessaoValida() {
+  const auth = sessionStorage.getItem(SESSION_KEY);
+  if (!auth) return false;
+  const { token, timestamp } = JSON.parse(auth);
+  if (token !== SENHA_CORRETA) return false;
+  if (Date.now() - timestamp > SESSION_DURATION) {
+    sessionStorage.removeItem(SESSION_KEY);
+    return false;
+  }
+  return true;
+}
+
+function salvarSessao() {
+  sessionStorage.setItem(SESSION_KEY, JSON.stringify({
+    token: SENHA_CORRETA,
+    timestamp: Date.now()
+  }));
+}
+
+function pedirSenha(callback) {
+  if (isSessaoValida()) { callback(); return; }
+  document.getElementById('senha-input').value = '';
+  document.getElementById('senha-erro').style.display = 'none';
+  document.getElementById('senha-callback').dataset.cb = 'pendente';
+  window._senhaCallback = callback;
+  document.getElementById('modal-senha').style.display = 'flex';
+  setTimeout(() => document.getElementById('senha-input').focus(), 100);
+}
+
+function confirmarSenha() {
+  const val = document.getElementById('senha-input').value;
+  if (md5(val) === SENHA_CORRETA) {
+    salvarSessao();
+    fecharModalSenha();
+    if (window._senhaCallback) window._senhaCallback();
+  } else {
+    document.getElementById('senha-erro').style.display = 'block';
+    document.getElementById('senha-input').value = '';
+    document.getElementById('senha-input').focus();
+  }
+}
+
+function fecharModalSenha() {
+  document.getElementById('modal-senha').style.display = 'none';
+  window._senhaCallback = null;
+}
+
+document.addEventListener('keydown', function(e) {
+  if (document.getElementById('modal-senha').style.display === 'flex' && e.key === 'Enter') {
+    confirmarSenha();
+  }
+  if (document.getElementById('modal-senha').style.display === 'flex' && e.key === 'Escape') {
+    fecharModalSenha();
+  }
+});
