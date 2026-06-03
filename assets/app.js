@@ -44,7 +44,7 @@ function getStatus(s) {
   if (l.includes('faturar')) return 'faturar';
   if (l.includes('conclu')) return 'concluido';
   if (l.includes('aguardando')) return 'aguardando';
-  if (l.includes('nu00e3o atendido') || l.includes('nao atendido')) return 'nao-atendido';
+  if (l.includes('não atendido') || l.includes('nao atendido')) return 'nao-atendido';
   return 'outro';
 }
 
@@ -59,8 +59,6 @@ function pillHTML(status) {
     'outro':        ['pill pill-blue',   'S/OS'],
   };
   const [cls, label] = map[s] || map['outro'];
-  return `<span class="${cls}">${label}</span>`;
-}
   return `<span class="${cls}">${label}</span>`;
 }
 
