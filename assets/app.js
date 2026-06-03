@@ -40,21 +40,27 @@ async function carregarDados() {
 function getStatus(s) {
   if (!s) return 'outro';
   const l = s.toLowerCase();
+  if (l.includes('faturado') && !l.includes('aguardando')) return 'faturado';
+  if (l.includes('faturar')) return 'faturar';
   if (l.includes('conclu')) return 'concluido';
   if (l.includes('aguardando')) return 'aguardando';
-  if (l.includes('não atendido') || l.includes('nao atendido')) return 'nao-atendido';
+  if (l.includes('nu00e3o atendido') || l.includes('nao atendido')) return 'nao-atendido';
   return 'outro';
 }
 
 function pillHTML(status) {
   const s = getStatus(status);
   const map = {
-    'concluido':    ['pill pill-green', 'Concluído'],
-    'aguardando':   ['pill pill-amber', 'Ag. Aprovação'],
-    'nao-atendido': ['pill pill-red',   'Não Atendido'],
-    'outro':        ['pill pill-blue',  'S/OS'],
+    'concluido':    ['pill pill-green',  'Concluído'],
+    'aguardando':   ['pill pill-amber',  'Ag. Aprovação'],
+    'nao-atendido': ['pill pill-red',    'Não Atendido'],
+    'faturar':      ['pill pill-blue',   'Faturar'],
+    'faturado':     ['pill pill-green',  'Faturado'],
+    'outro':        ['pill pill-blue',   'S/OS'],
   };
   const [cls, label] = map[s] || map['outro'];
+  return `<span class="${cls}">${label}</span>`;
+}
   return `<span class="${cls}">${label}</span>`;
 }
 
