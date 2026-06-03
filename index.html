@@ -106,9 +106,9 @@
       <div class="toolbar">
         <input class="search-box" type="text" id="search" placeholder="Buscar por OS, loja ou problema..." oninput="filtrarTabela()" />
         <button class="filter-btn active" onclick="filtrar('todos', this)">Todos</button>
-        <button class="filter-btn" onclick="filtrar('concluido', this)">Concluídos</button>
-        <button class="filter-btn" onclick="filtrar('aguardando', this)">Ag. Aprovação</button>
         <button class="filter-btn" onclick="filtrar('nao-atendido', this)">Não Atendidos</button>
+        <button class="filter-btn" onclick="filtrar('aguardando', this)">Ag. Aprovação</button>
+        <button class="filter-btn" onclick="filtrar('executado', this)">Executado — Ag. Faturamento</button>
         <button class="filter-btn" onclick="filtrar('faturar', this)">Faturar</button>
         <button class="filter-btn" onclick="filtrar('faturado', this)">Faturado</button>
         <button class="btn-pdf" onclick="exportarCSV()" style="margin-left:auto;"><i class="ti ti-table-export"></i> Exportar CSV</button>
@@ -178,11 +178,11 @@
           <label class="form-label">Status</label>
           <select id="f-status" class="form-input">
             <option value="">Selecione...</option>
-            <option value="Aguardando Aprovação de Orçamento">Aguardando Aprovação de Orçamento</option>
-            <option value="Concluído Aguardando Faturamento">Concluído Aguardando Faturamento</option>
             <option value="Não Atendido">Não Atendido</option>
-            <option value="Concluído Faturado">Concluído Faturado</option>
+            <option value="Aguardando Aprovação de Orçamento">Aguardando Aprovação de Orçamento</option>
+            <option value="Executado — Ag. Faturamento">Executado — Ag. Faturamento</option>
             <option value="Faturar">Faturar</option>
+            <option value="Faturado">Faturado</option>
           </select>
         </div>
         <div>

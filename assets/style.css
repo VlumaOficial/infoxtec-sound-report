@@ -248,3 +248,8 @@ tbody tr:hover td { background: var(--bg-page); }
 }
 .form-input:focus { border-color: var(--infox-light); background: #fff; }
 textarea.form-input { resize: vertical; }
+
+.pill-purple { background: #EDE9FB; color: #4C3D9E; }
+.pill-blue   { background: #E6F1FB; color: #0C447C; }
+
+[title] { position: relative; }

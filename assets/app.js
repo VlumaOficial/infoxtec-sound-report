@@ -42,24 +42,34 @@ function getStatus(s) {
   const l = s.toLowerCase();
   if (l.includes('faturado') && !l.includes('aguardando')) return 'faturado';
   if (l.includes('faturar')) return 'faturar';
-  if (l.includes('conclu')) return 'concluido';
+  if (l.includes('executado')) return 'executado';
   if (l.includes('aguardando')) return 'aguardando';
   if (l.includes('não atendido') || l.includes('nao atendido')) return 'nao-atendido';
   return 'outro';
 }
 
+const STATUS_TOOLTIP = {
+  'executado':  'Serviço executado. Nota fiscal pendente de emissão.',
+  'aguardando': 'Orçamento enviado ao cliente. Aguardando aprovação para execução.',
+  'nao-atendido': 'OS registrada mas ainda sem atendimento ou visita técnica.',
+  'faturar':    'Serviço aprovado e liberado para emissão de nota fiscal.',
+  'faturado':   'Serviço executado e nota fiscal emitida. Processo encerrado.',
+  'outro':      'Status não classificado.',
+};
+
 function pillHTML(status) {
   const s = getStatus(status);
   const map = {
-    'concluido':    ['pill pill-green',  'Concluído'],
+    'executado':    ['pill pill-blue',   'Executado — Ag. Faturamento'],
     'aguardando':   ['pill pill-amber',  'Ag. Aprovação'],
     'nao-atendido': ['pill pill-red',    'Não Atendido'],
-    'faturar':      ['pill pill-blue',   'Faturar'],
+    'faturar':      ['pill pill-purple', 'Faturar'],
     'faturado':     ['pill pill-green',  'Faturado'],
     'outro':        ['pill pill-blue',   'S/OS'],
   };
   const [cls, label] = map[s] || map['outro'];
-  return `<span class="${cls}">${label}</span>`;
+  const tooltip = STATUS_TOOLTIP[s] || '';
+  return `<span class="${cls}" title="${tooltip}" style="cursor:help;">${label}</span>`;
 }
 
 function fmt(val) {
