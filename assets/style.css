@@ -223,3 +223,28 @@ tbody tr:hover td { background: var(--bg-page); }
 }
 .btn-sync:hover { background: #0F6E56; }
 .btn-sync.loading { background: #888; cursor: not-allowed; }
+
+.btn-novo {
+  font-size: 12px; font-weight: 500;
+  background: var(--infox-primary);
+  border: none; border-radius: var(--radius-sm);
+  padding: 7px 14px; color: #fff;
+  cursor: pointer; display: flex; align-items: center; gap: 6px;
+  transition: background 0.2s;
+}
+.btn-novo:hover { background: var(--infox-dark); }
+
+.form-label {
+  display: block; font-size: 11px; font-weight: 500;
+  color: var(--text-secondary); margin-bottom: 4px;
+  text-transform: uppercase; letter-spacing: 0.04em;
+}
+.form-input {
+  width: 100%; padding: 8px 10px; font-size: 12px;
+  border: 0.5px solid var(--border); border-radius: var(--radius-sm);
+  background: var(--bg-page); color: var(--text-primary);
+  outline: none; font-family: inherit;
+  transition: border-color 0.15s;
+}
+.form-input:focus { border-color: var(--infox-light); background: #fff; }
+textarea.form-input { resize: vertical; }
