@@ -373,13 +373,13 @@ function pedirSenha(callback) {
   document.getElementById('modal-senha').style.display = 'flex';
   setTimeout(() => document.getElementById('senha-input').focus(), 100);
 }
-
 function confirmarSenha() {
   const val = document.getElementById('senha-input').value;
   if (md5(val) === SENHA_CORRETA) {
     salvarSessao();
+    const cb = window._senhaCallback;
     fecharModalSenha();
-    if (window._senhaCallback) window._senhaCallback();
+    if (cb) cb();
   } else {
     document.getElementById('senha-erro').style.display = 'block';
     document.getElementById('senha-input').value = '';
