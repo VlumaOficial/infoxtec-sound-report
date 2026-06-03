@@ -22,6 +22,7 @@ async function supabaseFetch(endpoint, options = {}) {
 }
 
 async function init() {
+  await carregarLojas();
   await carregarDados();
 }
 
@@ -261,7 +262,13 @@ function _abrirModal(id = null) {
   const c = id ? dadosOriginais.find(x => x.id === id) : {};
   document.getElementById('modal-titulo').textContent = id ? 'Editar Chamado' : 'Novo Chamado';
   document.getElementById('f-n_os').value         = c.n_os || '';
-  document.getElementById('f-loja').value         = c.loja || '';
+  const lojaNum = (c.loja || "").replace(/[^0-9]/g, "");
+  document.getElementById("f-loja").value = c.loja || "";
+  document.getElementById("f-loja-numero").value = lojaNum;
+  const lojaEncontrada = buscarLoja(lojaNum);
+  document.getElementById("f-loja-nome").value = lojaEncontrada ? lojaEncontrada.nome : (c.loja || "");
+  document.getElementById("f-loja-nome").style.color = lojaEncontrada ? "var(--green)" : "";
+  document.getElementById("f-loja-numero").style.borderColor = lojaEncontrada ? "var(--green)" : "";
   document.getElementById('f-problema').value     = c.problema || '';
   document.getElementById('f-data_abertura').value= c.data_abertura || '';
   document.getElementById('f-data_atend').value   = c.data_atend || '';
@@ -400,3 +407,33 @@ document.addEventListener('keydown', function(e) {
     fecharModalSenha();
   }
 });
+
+// ── LOJAS ──
+let lojas = [];
+
+async function carregarLojas() {
+  lojas = await supabaseFetch('lojas?order=numero.asc');
+}
+
+function buscarLoja(numero) {
+  const n = numero.replace(/\D/g, '');
+  return lojas.find(l => l.numero === n) || null;
+}
+
+function onLojaInput() {
+  const input = document.getElementById('f-loja-numero');
+  const val = input.value.replace(/\D/g, '');
+  const loja = buscarLoja(val);
+  const nomeEl = document.getElementById('f-loja-nome');
+  if (loja) {
+    nomeEl.value = loja.nome;
+    nomeEl.style.color = 'var(--green)';
+    input.style.borderColor = 'var(--green)';
+  } else {
+    nomeEl.value = val.length > 0 ? 'Loja não encontrada' : '';
+    nomeEl.style.color = val.length > 0 ? 'var(--red)' : '';
+    input.style.borderColor = val.length > 0 ? 'var(--red)' : '';
+  }
+  // Atualiza campo loja para salvar
+  document.getElementById('f-loja').value = loja ? `Loja ${loja.numero}` : input.value;
+}
